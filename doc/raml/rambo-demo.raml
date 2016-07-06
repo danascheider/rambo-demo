@@ -31,6 +31,7 @@ version: v1
               {
                 "$schema": "http://json-schema.org/draft-04/schema#",
                 "type": "object",
+                "additionalProperties": false,
                 "properties": {
                   "first_name": { "type": "string" },
                   "last_name": { "type": "string" },
@@ -43,5 +44,45 @@ version: v1
                     "minimum": 1,
                     "maximum": 150
                   }
+                }
+              }
+
+/weight_in_kilograms:
+  post:
+    description: Convert weight from pounds or stones to kilograms
+    body:
+      application/json:
+        schema: |
+          {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "required": [ "weight", "units" ],
+            "properties": {
+              "first_name": { "type": "string" },
+              "last_name": { "type": "string" },
+              "weight": { "type": "number" },
+              "units": {
+                "type": "string",
+                "enum": [
+                  "pounds",
+                  "stones",
+                  "kilograms"
+                ]
+              }
+            }
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "first_name": { "type": "string" },
+                  "last_name": { "type": "string" },
+                  "weight_in_kilograms": { "type": "number" }
                 }
               }
