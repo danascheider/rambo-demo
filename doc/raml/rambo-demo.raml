@@ -33,11 +33,16 @@ version: v1
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "first_name": { "type": "string" },
-                  "last_name": { "type": "string" },
-                  "dob": {
-                    "type": "string",
-                    "format": "date-time"
+                  "request": {
+                    "type": "object",
+                    "properties": {
+                      "first_name": { "type": "string" },
+                      "last_name": { "type": "string" },
+                      "dob": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
                   },
                   "age": { 
                     "type": "integer",
